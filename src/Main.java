@@ -1,12 +1,43 @@
+import entity.AgendaContatos;
 import entity.Contato;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Set;
+
+import static java.lang.System.*;
+
 public class Main {
     public static void main(String[] args) {
 
-        Contato contato = new Contato("Pedro", 99999999);
+        AgendaContatos agendaContatos = new AgendaContatos();
 
-        System.out.println(contato);
+        agendaContatos.adicionarContato("Pedro", 1111111111);
+        agendaContatos.adicionarContato("Wanessa", 2222222);
+        agendaContatos.adicionarContato("Felipe", 33333333);
+        agendaContatos.adicionarContato("Wanessa", 444444444);
+
+        System.out.println();
+
+        System.out.println("Exibe a lista de contatos: ");
+        agendaContatos.exibirContatos();
+
+        System.out.println();
+
+        System.out.println("Pesquisa contatos pelo nome: ");
+        Set<Contato> listAContato = agendaContatos.pesquisaPorNome("Wanessa");
+        for (Contato contato : listAContato){
+            System.out.println(contato);
+        }
+
+        System.out.println();
+
+        System.out.println("Atualiza o número de telefone de um contato específico: ");
+        agendaContatos.atualizarNumeroContato("Pedro", 555555555);
+
+        System.out.println();
+
+        System.out.println("Exibindo a lista de contatos atualizada: ");
+        agendaContatos.exibirContatos();
     }
+
+
 }
